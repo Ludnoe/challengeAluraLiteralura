@@ -1,35 +1,25 @@
 package com.cursosalura.challenge.literalura.modelos;
 
-//import javax.persistence.Entity;
-//import javax.persistence.GeneratedValue;
-//import javax.persistence.GenerationType;
-//import javax.persistence.Id;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
-import org.springframework.data.annotation.Id;
+import jakarta.persistence.Id;
 
-import java.util.Objects;
 
 @Entity
 public class DadosAutor {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String nome;
     private Integer anoNascimento;
-    private Integer anoFalecimento; // Pode ser nulo se o autor ainda estiver vivo
+    private Integer anoFalecimento;
 
-    // Construtores
-    public DadosAutor() {}
+    // Getters e Setters
 
-    public DadosAutor(String nome, Integer anoNascimento, Integer anoFalecimento) {
-        this.nome = nome;
-        this.anoNascimento = anoNascimento;
-        this.anoFalecimento = anoFalecimento;
-    }
-
-    // Getters e setters
     public Long getId() {
         return id;
     }
@@ -60,28 +50,5 @@ public class DadosAutor {
 
     public void setAnoFalecimento(Integer anoFalecimento) {
         this.anoFalecimento = anoFalecimento;
-    }
-
-    // toString, equals, and hashCode
-    @Override
-    public String toString() {
-        return "Autor{" +
-                "nome='" + nome + '\'' +
-                ", anoNascimento=" + anoNascimento +
-                ", anoFalecimento=" + anoFalecimento +
-                '}';
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        DadosAutor autor = (DadosAutor) o;
-        return Objects.equals(id, autor.id) && Objects.equals(nome, autor.nome);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, nome);
     }
 }
